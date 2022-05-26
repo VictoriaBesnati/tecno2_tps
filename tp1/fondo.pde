@@ -1,6 +1,6 @@
 class fondo {
   //=======================
-  int t, y, t1, y1, t2, y2;
+  PGraphics marcos;
   int cm;//cantidad de marcos
   int [] r = new int [12];
   //=======================
@@ -8,10 +8,13 @@ class fondo {
   //=======================
   String estado, estadoantes;
   //=======================
-  PGraphics marcos;
+  int t, y, t1, y1, t2, y2;
   //=======================
+  PImage mask;
 
   fondo() {
+    //=======================
+    mask = loadImage("textura.PNG");
     //=======================
     estado = "neutro";
     estadoantes = "neutro";
@@ -31,9 +34,9 @@ class fondo {
     //=======================
     noStroke();
     //=======================
-    
+
     //-----------------------Paleta-----------------------
-    
+
     c[0] = #b04334; // ladrillo
     c[1] = #c22c23; // rojo c22c23
     c[2] = #ac9465; // marron
@@ -141,6 +144,10 @@ class fondo {
     marcos.endDraw();
     image(marcos, 0, 0);
     //=======================
+    push();
+    tint(255, 25);
+    image(mask,0,0,width,height);
+    pop();
   }
   /*-----------------------MOUSE-----------------------
    void cambios(boolean abajo, boolean arriba, boolean izq, float vel ) {

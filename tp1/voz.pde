@@ -95,9 +95,7 @@ class voz {
     }
     if (gp.filtradoNorm() > 0.5) {
       agudo = true;
-    }
-   
-    
+    }      
   }
   float amp() {
     return ga.filtradoNorm();

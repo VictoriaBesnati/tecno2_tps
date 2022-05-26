@@ -2,6 +2,8 @@ class pincelada {
   //=======================
   float k, v, angulo;//angulo 
   float a [] = new float [5];//angulo 2
+  float x [] = new float [6];//random
+  float y [] = new float [6];//random
   float tx, ty;//tamaño 
   float b;//alpha
   //=======================
@@ -9,10 +11,13 @@ class pincelada {
   //=======================
   PGraphics p;
   //=======================
-  //PImage mancha;
+  int cm = 11;
+  int ri [] = new int [cm];//random
+  PImage [] mancha = new PImage [cm];
   //=======================
   pincelada() {  
     //=======================
+    //c=3;
     c = int(random(4, 6));
     b = 0;
     //=======================
@@ -27,6 +32,36 @@ class pincelada {
     p.rectMode(CENTER);
     p.noStroke();
     p.endDraw();
+    //=======================
+    for (int i = 1; i < cm; i++) {
+      mancha [i] = loadImage(i+".png");
+    }
+    //=======================
+    ri[0] = int(random(1, cm));
+    ri[1] = int(random(1, cm));
+    ri[2] = int(random(1, cm));
+    ri[3] = int(random(1, cm));
+    ri[4] = int(random(1, cm));
+    ri[5] = int(random(1, cm));
+    ri[6] = int(random(1, cm));
+    ri[7] = int(random(1, cm));
+    ri[8] = int(random(1, cm));
+    ri[9] = int(random(1, cm));
+    ri[10] = int(random(1, cm));
+    //=======================
+    x[0] = int(random(-250, 150));
+    x[1] = int(random(-250, 150));
+    x[2] = int(random(-250, 150));
+    x[3] = int(random(-250, 150));
+    x[4] = int(random(-250, 150));
+    x[5] = int(random(-250, 150));
+    //=======================
+    y[0] = int(random(-200, 250));
+    y[1] = int(random(-200, 250));
+    y[2] = int(random(-200, 250));
+    y[3] = int(random(-200, 250));
+    y[4] = int(random(-200, 250));
+    y[5] = int(random(-200, 250));
     //=======================
   }
   /*
@@ -61,8 +96,8 @@ class pincelada {
    */
   void cambios(boolean grave, boolean agudo, boolean sonido, float pitch) {
     //=======================
-    tx = width*0.20;
-    ty = height*0.40;
+    tx = width*0.40;
+    ty = height*0.80;
     //=======================
     if (b > 300) {
       b = 300;
@@ -101,215 +136,123 @@ class pincelada {
       //---------------------------------- medio
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-100, -50, tx, ty);
-      //naranja
-      p.fill(#ee2d23, b);
-      p.rect(-115, -75, tx-15, ty-15);
-      //Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-90, -40, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[1]], x[0], y[0], tx, ty);
       p.pop();
       //---------------------------------- 
       p.push();
       p.rotate(angulo+a[0]);
-      p.fill(0, b);
-      p.rect(170, 170, tx, ty);
-      //naranja
-      p.fill(#ee2d23, b);
-      p.rect(190, 190, tx-15, ty-15);
-      //Amarillo
-      p.fill(#f2782d, b);
-      p.rect(150, 150, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[1]], x[1], y[1], tx, ty);
       p.pop();
       //---------------------------------- 
       p.push();
       p.rotate(angulo+a[4]);
-      p.fill(0, b);
-      p.rect(-40, -230, tx-70, ty-200);
-      p.fill(#ee2d23, b);
-      p.rect(-30, -220, tx-85, ty-215);
-      p.fill(#f2782d, b);
-      p.rect(-50, -250, tx-95, ty-225);
+      p.tint(255, b);
+      p.image(mancha[ri[3]], x[2], y[2], tx, ty);
       p.pop();
       break;
     case 4: 
-      //---------------------------------- medio
+      //---------------------------------- 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(0, 180, tx, ty);
-      //naranja
-      p.fill(#ee2d23, b);
-      p.rect(10, 190, tx-15, ty-15);
-      //Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-20, 160, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[1]], x[0], y[0], tx, ty);
       p.pop();
-      //---------------------------------- der arriba
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[0]);
-      p.fill(0, b);
-      p.rect(-250, -100, tx, ty);
-      p.fill(#ee2d23, b);
-      p.rect(-240, -90, tx-15, ty-15);
-      p.fill(#f2782d, b);
-      p.rect(-260, -120, tx-25, ty-25);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[2]], x[1], y[1], tx, ty);
       p.pop();
-      //---------------------------------- izq abajo
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo-a[1]);
-      p.fill(0, b);
-      p.rect(270, 70, tx, ty);
-      p.fill(#ee2d23, b);
-      p.rect(280, 80, tx-15, ty-15);
-      p.fill(#f2782d, b);
-      p.rect(250, 50, tx-25, ty-25);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[3]], x[2], y[2], tx, ty);
       p.pop();
-      //---------------------------------- torcido
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[4]);
-      p.fill(0, b);
-      p.rect(-40, -230, tx-70, ty-200);
-      p.fill(#ee2d23, b);
-      p.rect(-30, -220, tx-85, ty-215);
-      p.fill(#f2782d, b);
-      p.rect(-50, -250, tx-95, ty-225);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[4]], x[3], y[3], tx, ty);
       p.pop();
+      //---------------------------------- 
       break;
     case 5: 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-100, -50, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-115, -75, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-90, -40, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[1]], x[0], y[0], tx, ty);
       p.pop();
-      //------------------------
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[0]);
-      p.fill(0, b);
-      p.rect(-250, -100, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-240, -90, tx-15, ty-15);
-      p.fill(#f2782d, b);
-      p.rect(-260, -120, tx-25, ty-25);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[2]], x[1], y[1], tx, ty);
       p.pop();
-      //------------------------
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[1]);
-      p.fill(0, b);
-      p.rect(170, 170, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(150, 150, tx-15, ty-15);
-      p.fill(#f2782d, b);
-      p.rect(190, 190, tx-25, ty-25);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[3]], x[2], y[2], tx, ty);
       p.pop();
-      //------------------------
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[2]);
-      p.fill(0, b);
-      p.rect(0, 300, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(20, 320, tx-15, ty-15);
-      p.fill(#f2782d, b);
-      p.rect(-20, 280, tx-25, ty-25);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[4]], x[3], y[3], tx, ty);
       p.pop();
-      //------------------------
+      //---------------------------------- 
       p.push();
-      p.rotate(angulo+a[4]);
-      p.fill(0, b);
-      p.rect(-40, -230, tx-70, ty-200);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-30, -220, tx-85, ty-215);
-      p.fill(#f2782d, b);
-      p.rect(-50, -250, tx-95, ty-225);
+      p.rotate(angulo);
+      p.tint(255, b);
+      p.image(mancha[ri[5]], x[4], y[4], tx, ty);
       p.pop();
+      
       break;
     case 6: 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-100, 180, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-80, 200, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-140, 160, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[1]], x[0], y[0], tx, ty);
       p.pop();
-      //---------------------------
+      //---------------------------------- 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-400, 180, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-380, 200, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-440, 160, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[2]], x[1], y[1], tx, ty);
       p.pop();
-      //---------------------------
+      //---------------------------------- 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(200, 200, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(180, 220, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(220, 180, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[3]], x[2], y[2], tx, ty);
       p.pop();
-      //---------------------------
+      //---------------------------------- 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(280, -200, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(250, -220, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(300, -180, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[4]], x[3], y[3], tx, ty);
       p.pop();
-      //---------------------------
+      //---------------------------------- 
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-400, -240, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-380, -260, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-440, -280, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[5]], x[4], y[4], tx, ty);
       p.pop();
-      //---------------------------
+      
       p.push();
       p.rotate(angulo);
-      p.fill(0, b);
-      p.rect(-100, -260, tx, ty);
-      //--------------naranja
-      p.fill(#ee2d23, b);
-      p.rect(-180, -300, tx-15, ty-15);
-      //--------------Amarillo
-      p.fill(#f2782d, b);
-      p.rect(-140, -240, tx-25, ty-25);
+      p.tint(255, b);
+      p.image(mancha[ri[6]], x[5], y[5], tx, ty);
       p.pop();
       break;
     }
-    image(p, 0, 0);
     p.endDraw();
     //=======================
+    push();
+    image(p, 0, 0);
+    pop();
   }
 }
