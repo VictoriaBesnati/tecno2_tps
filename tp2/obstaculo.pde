@@ -1,0 +1,170 @@
+class obstaculo {
+
+  FBox p1;
+  FBox p2;
+  FBox p3;
+
+  FBox o1;
+  FBox o2;
+  FBox o3;
+  FBox o4;
+  FBox o5;
+
+  FBox o6;
+  FBox o7;
+  FBox o8;
+  FBox o9;
+  FBox o10;
+
+  int tamx = 400;
+  int tamy = 50;
+  int tamo = 100;
+
+  float limitx1 = 40;
+  float limitx2 = width-40;
+
+  float limity1 = height/3;
+  float limity2 = height-400;
+
+  obstaculo() {
+    iniciar();
+    agg();
+  }
+  void iniciar() {
+    //--------------------------------------------
+    p1 = new FBox(tamx, tamy);
+    p1.setPosition(width/3, height/4);
+    p1.setRotation(radians(5));
+    p1.setStatic(true);
+    p1.setNoStroke();
+    p1.setFill(222, 170, 255);
+
+    p2 = new FBox(tamx, tamy);
+    p2.setPosition(width-200, height/2);
+    p2.setRotation(radians(-5));
+    p2.setStatic(true);
+    p2.setNoStroke();
+    p2.setFill(222, 170, 255);
+
+    p3 = new FBox(tamx, tamy);
+    p3.setPosition(width/2, height-200);
+    p3.setRotation(radians(5));
+    p3.setStatic(true);
+    p3.setNoStroke();
+    p3.setFill(222, 170, 255);
+
+    //--------------------------------------------
+    //Estatico
+    o1 = new FBox(tamo, tamo);
+    o1.setName("ob");
+    o1.setPosition(600, 0);
+    o1.setStatic(true);
+    o1.setGrabbable(false);
+    o1.setFill(0);
+
+    o2 = new FBox(tamo, tamo);
+    o2.setName("ob");
+    o2.setPosition(width/2, height/2);
+    o2.setStatic(true);
+    o2.setGrabbable(false);
+    o2.setFill(0);
+
+    //Random
+    o3 = new FBox(tamo, tamo);
+    o3.setName("ob");
+    o3.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o3.setStatic(true);
+    o3.setGrabbable(false);
+    o3.setFill(0);
+
+    o4 = new FBox(100, 100);
+    o4.setName("ob");
+    o4.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o4.setStatic(true);
+    o4.setGrabbable(false);
+    o4.setFill(0);
+
+    o5 = new FBox(100, 100);
+    o5.setName("ob");
+    o5.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o5.setStatic(true);
+    o5.setGrabbable(false);
+    o5.setFill(0);
+  }
+  void reiniciar() {
+    //--------------------------------------------
+    p1.setPosition(width/5, height/4);
+    p1.setRotation(radians(5));
+    p1.setStatic(true);
+    p1.setNoStroke();
+    p1.setFill(222, 170, 255);
+
+    p2.setPosition(width-200, height/2);
+    p2.setRotation(radians(-5));
+    p2.setStatic(true);
+    p2.setNoStroke();
+    p2.setFill(222, 170, 255);
+
+    p3.setPosition(width/3, height-200);
+    p3.setRotation(radians(5));
+    p3.setStatic(true);
+    p3.setNoStroke();
+    p3.setFill(222, 170, 255);
+
+    //--------------------------------------------
+    //Estatico
+    o1.setName("ob");
+    o1.setPosition(600, 0);
+    o1.setStatic(true);
+    o1.setGrabbable(false);
+    o1.setFill(0);
+
+    o2.setName("ob");
+    o2.setPosition(width/2, height/2);
+    o2.setStatic(true);
+    o2.setGrabbable(false);
+    o2.setFill(0);
+
+    //Random
+    o3.setName("ob");
+    o3.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o3.setStatic(true);
+    o3.setGrabbable(false);
+    o3.setFill(0);
+
+    o4.setName("ob");
+    o4.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o4.setStatic(true);
+    o4.setGrabbable(false);
+    o4.setFill(0);
+
+    o5.setName("ob");
+    o5.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    o5.setStatic(true);
+    o5.setGrabbable(false);
+    o5.setFill(0);
+    
+  }
+  void agg() {
+
+    mundo.add(p1);
+    mundo.add(p2);
+    mundo.add(p3);
+
+    mundo.add(o1);
+    mundo.add(o2);
+    mundo.add(o3);
+    mundo.add(o4);
+    mundo.add(o5);
+    
+  }
+  void aggobjeto() {   
+    FBox nuevo = new FBox(100, 100);
+    nuevo.setName("ob");
+    nuevo.setPosition(random(limitx1, limitx2), random(limity1, limity2));
+    nuevo.setStatic(true);
+    nuevo.setGrabbable(false);
+    nuevo.setFill(0);
+    mundo.add(nuevo);
+  }
+}
